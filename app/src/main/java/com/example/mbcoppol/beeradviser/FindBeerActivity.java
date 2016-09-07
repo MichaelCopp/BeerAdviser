@@ -32,7 +32,6 @@ public class FindBeerActivity extends AppCompatActivity {
             brandsFormatted.append(brand).append('\n');
         }
         //Display the beers
-        brandsFormatted.append("zippy dee");
         brands.setText(brandsFormatted);
 
     }
