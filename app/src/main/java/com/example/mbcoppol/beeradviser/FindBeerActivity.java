@@ -2,6 +2,12 @@ package com.example.mbcoppol.beeradviser;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Spinner;
+import android.widget.TextView;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class FindBeerActivity extends AppCompatActivity {
 
@@ -10,4 +16,25 @@ public class FindBeerActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_find_beer);
     }
+
+    public void onClickFindBeer(View view) {
+
+        //get reference to the TextView
+        TextView brands = (TextView) findViewById(R.id.brands);
+
+        Spinner color = (Spinner) findViewById(R.id.color);
+
+        String beerType =String.valueOf(color.getSelectedItem());
+
+        List<String> brandsList = BeerExpert.getBrands(beerType);
+        StringBuilder brandsFormatted = new StringBuilder();
+        for (String brand: brandsList) {
+            brandsFormatted.append(brand).append('\n');
+        }
+        //Display the beers
+        brandsFormatted.append("zippy dee");
+        brands.setText(brandsFormatted);
+
+    }
 }
+
